@@ -19,7 +19,8 @@ class Compra {
     }
 
     func getValorTotal() {
-        print("R$\(Float(Quantidade)*Float(Valor))", terminator: "")
+        let ValorTotal = String(format: "%.2f", Float(Quantidade)*Float(Valor))
+        print("R$\(ValorTotal)", terminator: "")
     }
 
     func escrituracao() {
