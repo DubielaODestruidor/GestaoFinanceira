@@ -16,11 +16,13 @@ class NacionalForaDoEstado: Compra {
     }
 
     func getValorComFrete() {
-        print("R$\(Float(Quantidade)*Float(Valor)*(1+Float(Aliquota)))", terminator: "")
+        let ValorComFrete = String(format: "%.2f", Float(Quantidade)*Float(Valor)*(1+Float(Aliquota)))
+        print("R$\(ValorComFrete)", terminator: "")
     }
 
     func getFrete(){
-        print("R$\(Float(Quantidade)*Float(Valor)*Float(Aliquota))", terminator: "")
+        let Frete = String(format: "%.2f", Float(Quantidade)*Float(Valor)*Float(Aliquota))
+        print("R$\(Frete)", terminator: "")
     }
 
     override func escrituracao() {

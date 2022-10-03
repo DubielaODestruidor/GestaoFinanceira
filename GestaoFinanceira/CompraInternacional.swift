@@ -16,11 +16,13 @@ class CompraInternacional: Compra {
     }
 
     func getValorComImposto() {
+        let ValorComImposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))
         print("R$\(Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))", terminator: "")
     }
 
     func getImposto(){
-        print("R$\(Float(Quantidade)*Float(Valor)*Float(ImpostoDeImportacao))", terminator: "")
+        let Imposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*Float(ImpostoDeImportacao))
+        print("R$\(Imposto)", terminator: "")
     }
 
     override func escrituracao() {
