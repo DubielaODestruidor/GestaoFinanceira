@@ -15,14 +15,14 @@ class NacionalForaDoEstado: Compra {
         super.init(Produto: Produto, Quantidade: Quantidade, Valor: Valor, Fornecedor: Fornecedor)
     }
 
-    func getValorComFrete() {
+    func getValorComFrete() -> String {
         let ValorComFrete = String(format: "%.2f", Float(Quantidade)*Float(Valor)*(1+Float(Aliquota)))
-        print("R$\(ValorComFrete)", terminator: "")
+        return "R$\(ValorComFrete)"
     }
 
-    func getFrete(){
+    func getFrete() -> String {
         let Frete = String(format: "%.2f", Float(Quantidade)*Float(Valor)*Float(Aliquota))
-        print("R$\(Frete)", terminator: "")
+        return "R$\(Frete)"
     }
 
     override func escrituracao() {

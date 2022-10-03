@@ -18,9 +18,9 @@ class Compra {
         self.Fornecedor = Fornecedor
     }
 
-    func getValorTotal() {
+    func getValorTotal() -> String {
         let ValorTotal = String(format: "%.2f", Float(Quantidade)*Float(Valor))
-        print("R$\(ValorTotal)", terminator: "")
+        return "R$\(ValorTotal)"
     }
 
     func escrituracao() {

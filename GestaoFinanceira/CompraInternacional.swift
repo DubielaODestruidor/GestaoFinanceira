@@ -15,14 +15,14 @@ class CompraInternacional: Compra {
         super.init(Produto: Produto, Quantidade: Quantidade, Valor: Valor, Fornecedor: Fornecedor)
     }
 
-    func getValorComImposto() {
+    func getValorComImposto() -> String {
         let ValorComImposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))
-        print("R$\(Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))", terminator: "")
+        return "R$\(Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))"
     }
 
-    func getImposto(){
+    func getImposto() -> String {
         let Imposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*Float(ImpostoDeImportacao))
-        print("R$\(Imposto)", terminator: "")
+        return "R$\(Imposto)"
     }
 
     override func escrituracao() {
