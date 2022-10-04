@@ -4,31 +4,36 @@
 
 import Foundation
 
-class CompraInternacional: Compra {
+struct CompraInternacional: Compra {
 
-    var Pais: String
-    var ImpostoDeImportacao: Double
+    private(set) var Produto: String
+    private(set) var Quantidade: Int
+    private(set) var Valor: Double
+    private(set) var Fornecedor: String
+    private(set) var Extra1_tipo: String
+    private(set) var Extra1: String
+    private(set) var Extra2_tipo: String
+    private(set) var Extra2: Double
 
-    init(Produto: String, Quantidade: Int, Valor: Double, Fornecedor: String, Pais: String, ImpostoDeImportacao: Double) {
-        self.Pais = Pais
-        self.ImpostoDeImportacao = ImpostoDeImportacao / 100
-        super.init(Produto: Produto, Quantidade: Quantidade, Valor: Valor, Fornecedor: Fornecedor)
+    func getValorTotal() -> String {
+        let ValorTotal = String(format: "%.2f", Float(Quantidade)*Float(Valor))
+        return "R$\(ValorTotal)"
     }
 
     func getValorComImposto() -> String {
-        let ValorComImposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))
-        return "R$\(Float(Quantidade)*Float(Valor)*(1+Float(ImpostoDeImportacao)))"
+        let ValorComImposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*(1+Float(Extra2)))
+        return "R$\(Float(Quantidade)*Float(Valor)*(1+Float(Extra2)))"
     }
 
     func getImposto() -> String {
-        let Imposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*Float(ImpostoDeImportacao))
+        let Imposto = String(format: "%.2f", Float(Quantidade)*Float(Valor)*Float(Extra2))
         return "R$\(Imposto)"
     }
 
-    override func escrituracao() {
+    func escrituracao() {
         print("\(getValorTotal()) foi adicionado ao estoque.")
         print("\(getValorComImposto()) foi o total registrado na tesouraria.")
         print("\(getValorTotal()) foi registrado para \(Fornecedor).")
-        print("\(getImposto()) de imposto de importação foi registrado para \(Pais).")
+        print("\(getImposto()) de imposto de importação foi registrado para \(Extra1).")
     }
 }

@@ -4,26 +4,17 @@
 
 import Foundation
 
-class Compra {
+protocol Compra {
 
-    var Produto: String
-    var Quantidade: Int
-    var Valor: Double
-    var Fornecedor: String
+    var Produto: String { get }
+    var Quantidade: Int { get }
+    var Valor: Double { get }
+    var Fornecedor: String { get }
+    var Extra1_tipo: String { get } //País ou estado
+    var Extra1: String { get } //Nome
+    var Extra2_tipo : String { get } //Aliquota ou ICMS
+    var Extra2: Double { get } //Valor
 
-    init(Produto: String, Quantidade: Int, Valor: Double, Fornecedor: String) {
-        self.Produto = Produto
-        self.Quantidade = Quantidade
-        self.Valor = Valor
-        self.Fornecedor = Fornecedor
-    }
-
-    func getValorTotal() -> String {
-        let ValorTotal = String(format: "%.2f", Float(Quantidade)*Float(Valor))
-        return "R$\(ValorTotal)"
-    }
-
-    func escrituracao() {
-        getValorTotal()
-    }
+    func getValorTotal() -> String
+    func escrituracao()
 }

@@ -4,17 +4,28 @@
 
 import Foundation
 
-class CompraNacional: Compra {
+struct CompraNacional: Compra {
 
-    var Estado: String
+    private(set) var Produto: String
+    private(set) var Quantidade: Int
+    private(set) var Valor: Double
+    private(set) var Fornecedor: String
+    private(set) var Extra: String = "None"
+    private(set) var Extra1_tipo: String = ""
+    private(set) var Extra1: String = ""
+    private(set) var Extra2_tipo: String = ""
+    private(set) var Extra2: Double = 0
 
-    init(Produto: String, Quantidade: Int, Valor: Double, Fornecedor: String, Estado: String) {
-        self.Estado = Estado
-        super.init(Produto: Produto, Quantidade: Quantidade, Valor: Valor, Fornecedor: Fornecedor)
+
+    func getValorTotal() -> String {
+        let ValorTotal = String(format: "%.2f", Float(Quantidade)*Float(Valor))
+        return "R$\(ValorTotal)"
     }
 
-    override func escrituracao() {
+    func escrituracao() {
+        print("Compra de \(Produto).")
         print("\(getValorTotal()) foi adicionado ao estoque.")
         print("\(getValorTotal()) foi registrado na tesouraria para \(Fornecedor).")
     }
+
 }
